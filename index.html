@@ -1,1 +1,387 @@
-index
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0031.jpg">
+    <link rel="icon" href="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0031.jpg" type="image/jpg">
+    <title>Atividade Funcional</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, green, yellow, red);
+            color: #333;
+        }
+        header {
+            background-color: #0077b6;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header nav {
+            display: flex;
+            gap: 15px;
+        }
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #0077b6;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 0px;
+            font-size: 14px;
+            position:fixed;
+            bottom:0;
+        }
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-images img {
+            width: 100%;
+            flex-shrink: 0;
+        }
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+         .central-image {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .central-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .carousel-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        .carousel-buttons button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+        }
+        .modal-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-top: 10px;
+        }
+        .form-group .horarios {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .form-group .horarios label {
+            margin-left: 5px;
+        }
+        .form-group button {
+            background-color: #0077b6;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .form-group button:hover {
+            background-color: #005f86;
+        }
+        .close-btn {
+            background-color: #e63946;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .close-btn:hover {
+            background-color: #b22234;
+        }
+         .btn-center {
+            background-color: #0077b6;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+        .btn-center:hover {
+            background-color: #005f86;
+        }
+        h2{
+              text-align:center;
+        }
+        .atvFunciona{
+              text-align:center;
+              font-weight:bold;
+        }
+        .imagem1{
+              width:30%;
+              height:50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>Atividade Funcional</div>
+        <nav>
+            <a onclick="openModal('modalOqueSomos')">O que somos</a>
+            <a onclick="openModal('modalGaleria')">Galeria</a>
+            <a onclick="openModal('modalBeneficio')">Benefício</a>
+            
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Bem-vindo</h2><p class="atvFunciona"> Atividade Funcional</p>
+        
+    </div>
+
+    
+
+    <!-- Modais -->
+    <!-- Modal O que somos -->
+    <div id="modalOqueSomos" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('modalOqueSomos')">&times;</span>
+            <h2>O que somos</h2>
+            <p>Somos uma equipe dedicada a promover saúde e bem-estar através de treinos funcionais personalizados, adequados para todas as idades e níveis de condicionamento físico.</p>
+        </div>
+    </div>
+
+    <!-- Modal Galeria -->
+    <div id="modalGaleria" class="modal">
+          
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('modalGaleria')">&times;</span>
+            <h2>Galeria</h2>
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20241219-WA0118.jpg?text=Imagem+1" alt="Imagem 1">
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0029.jpg?text=Imagem+2" alt="Imagem 2">
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0031.jpg?text=Imagem+3" alt="Imagem 3">
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0032.jpg?text=Imagem+4" alt="Imagem 4">
+            
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20241219-WA0118.jpg?text=Imagem+1" alt="Imagem 1">
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0029.jpg?text=Imagem+2" alt="Imagem 2">
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0031.jpg?text=Imagem+3" alt="Imagem 3">
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0032.jpg?text=Imagem+4" alt="Imagem 4">
+            
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20241219-WA0118.jpg?text=Imagem+1" alt="Imagem 1">
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0029.jpg?text=Imagem+2" alt="Imagem 2">
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0031.jpg?text=Imagem+3" alt="Imagem 3">
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0032.jpg?text=Imagem+4" alt="Imagem 4">
+            
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20241219-WA0118.jpg?text=Imagem+1" alt="Imagem 1">
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0029.jpg?text=Imagem+2" alt="Imagem 2">
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0031.jpg?text=Imagem+3" alt="Imagem 3">
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0032.jpg?text=Imagem+4" alt="Imagem 4">
+            
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20241219-WA0118.jpg?text=Imagem+1" alt="Imagem 1">
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0029.jpg?text=Imagem+2" alt="Imagem 2">
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0031.jpg?text=Imagem+3" alt="Imagem 3">
+            <img class="imagem1" src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0032.jpg?text=Imagem+4" alt="Imagem 4">
+        </div>
+    </div>
+
+    <!-- Modal Benefício -->
+    <div id="modalBeneficio" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('modalBeneficio')">&times;</span>
+            <h2>Benefício</h2>
+            <p>Com nossos treinos funcionais, você melhora o condicionamento físico, reduz o estresse, ganha mais energia e alcança seus objetivos de forma saudável e eficaz.</p>
+        </div>
+    </div>
+
+
+<div class="central-image">
+      <section id="galeria">
+            
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0031.jpg" alt="Treino 1">
+                    <img src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0029.jpg?text=Treino+2" alt="Treino 2">
+                    <img src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20250123-WA0032.jpg?text=Treino+3" alt="Treino 3">
+                    <img src="https://raw.githubusercontent.com/CsrNewtech/By/refs/heads/main/IMG-20241219-WA0118.jpg?text=Treino+4" alt="Treino 4">
+                </div>
+                <div class="carousel-buttons">
+                    <button id="prevBtn">&lt;</button>
+                    <button id="nextBtn">&gt;</button>
+                </div>
+            </div>
+        </section>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a class="btn-center"  onclick="openModal('modalTreino')">Marcar Treino</a>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modalTreino" class="modal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModal('modalTreino')">&times;</span>
+        <div class="modal-header">Marcar Treino</div>
+        <form id="treinoForm">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+            </div>
+            <div class="form-group">
+                <label>Escolha um horário:</label>
+                <div class="horarios">
+                    <input type="radio" id="terça" name="horario" value="Terça-feira às 20:00" required>
+                    <label for="terça">Terça-feira às 20:00</label>
+                    <input type="radio" id="quarta" name="horario" value="Quarta-feira às 06:00">
+                    <label for="quarta">Quarta-feira às 06:00</label>
+                </div>
+                <div class="horarios">
+                    <input type="radio" id="quinta" name="horario" value="Quinta-feira às 20:00">
+                    <label for="quinta">Quinta-feira às 20:00</label>
+                    <input type="radio" id="sexta" name="horario" value="Sexta-feira às 06:00">
+                    <label for="sexta">Sexta-feira às 06:00</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="enviarWhatsApp()">Enviar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+    <footer>
+        <p>Todos os direitos reservados | Desenvolvedor Web: Carlos NEWTECH</p>
+    </footer>
+
+    <script>
+        const images = document.querySelector('.carousel-images');
+        const totalImages = document.querySelectorAll('.carousel-images img').length;
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            images.style.transform = `translateX(${offset}%)`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarousel();
+        });
+
+        function openModal(modalId) {
+        document.getElementById(modalId).style.display = 'flex';
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+    }
+
+    function enviarWhatsApp() {
+        const nome = document.getElementById('nome').value;
+        const horario = document.querySelector('input[name="horario"]:checked')?.value;
+
+        if (!nome || !horario) {
+            alert('Por favor, preencha o nome e selecione um horário.');
+            return;
+        }
+
+        const numero = '71987737353'; // Substitua pelo número desejado
+        const mensagem = `Olá, meu nome é ${nome} e gostaria de marcar o treino para ${horario}.`;
+        const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+        window.open(url, '_blank');
+    }
+    </script>
+</body>
+</html>
+
+
